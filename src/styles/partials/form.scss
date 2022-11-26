@@ -1,0 +1,97 @@
+.shopping-form {
+    margin-bottom: 32px;
+
+    .shopping-form-inputs {
+        display: flex;
+        margin-bottom: 24px;
+        align-items: flex-end;
+
+        .shopping-form-item-wrapper {
+            flex: 1;
+            max-width: 256px;
+
+            .shopping-form-label {
+                display: block;
+                margin-bottom: 4px;
+            }
+        }
+
+        .shopping-form-item-input,
+        .shopping-form-quantity-input {
+            width: 100%;
+            height: 32px;
+            padding: 0 12px;
+            border: 1px solid $gray-300;
+            border-radius: 4px;
+            background-color: $white;
+        }
+
+        .shopping-form-quantity-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: 23px;
+
+            .shopping-form-quantity-input {
+                max-width: 64px;
+                text-align: center;
+                margin: 0 4px;
+            }
+
+            .shopping-form-quantity-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border: 0;
+                border-radius: 4px;
+                background-color: $gray-100;
+                transition: background-color 0.2s linear;
+
+                &:hover {
+                    background-color: $orange-500;
+                }
+
+                &:active {
+                    background-color: $orange-300;
+                }
+            }
+
+            .shopping-form-quantity-button::before,
+            .shopping-form-increment-button::after {
+                content: "";
+                position: absolute;
+                width: 16px;
+                height: 4px;
+                border-radius: 4px;
+                background-color: $white;
+            }
+
+            .shopping-form-increment-button {
+                &::after {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+
+    .shopping-form-submit-button {
+        width: 100%;
+        max-width: 128px;
+        height: 32px;
+        border: 0;
+        border-radius: 4px;
+        color: $white;
+        font-weight: 700;
+        background-color: $orange-500;
+        transition: background-color 0.2s linear;
+
+        &:hover {
+            background-color: $orange-300;
+        }
+
+        &:active {
+            background-color: $orange-500;
+        }
+    }
+}

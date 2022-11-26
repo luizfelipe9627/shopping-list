@@ -1,0 +1,32 @@
+.shopping-result {
+    max-width: 416px;
+
+    .shopping-result-head,
+    .shopping-item {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        padding: 8px 16px;
+    }
+
+    .shopping-result-head {
+        background-color: $gray-100;
+    }
+
+    .shopping-items {
+        list-style: none;
+
+        .shopping-item {
+            // O "&" é usado para apontar que vai ser aplicado no pai, no caso o próprio shopping item.
+            &:nth-child(even) {
+                background-color: $gray-100;
+            }
+        }
+
+        .shopping-item {
+            // O "&" é usado para apontar que vai ser aplicado no pai, no caso o próprio shopping item.
+            &:hover {
+                background-color: $gray-300;
+            }
+        }
+    }
+}
