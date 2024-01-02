@@ -1,5 +1,5 @@
 // Está armazenando o pacote que foi instalado no src, dest, watch e parallel.
-const { src, dest, watch, parallel } = require("gulp");
+const gulp = require("gulp");
 
 // Está fazendo a requisição das dependências.
 const sass = require("gulp-sass")(require("sass"));
@@ -42,20 +42,20 @@ function server() {
 // Responsável por monitorar modificações nos arquivos.
 function sentinel() {
     // Como primeiro parâmetro irá ficar monitorando todos os arquivos SCSS, como segundo vai sempre ler os arquivos e como terceiro vai executar a função styles toda vez que sentinel for executada.
-    watch(paths.html.all, { ignoreInitial: false }, html);
-    watch(paths.styles.all, { ignoreInitial: false }, styles);
-    watch(paths.scripts.all, { ignoreInitial: false }, scripts);
+    gulp.watch(paths.html.all, { ignoreInitial: false }, html);
+    gulp.watch(paths.styles.all, { ignoreInitial: false }, styles);
+    gulp.watch(paths.scripts.all, { ignoreInitial: false }, scripts);
 }
 
 // Responsável por gerar o arquivo HTML.
 function html() {
     // Retorna o caminho do HTML.
     return (
-        src(paths.html.all)
+        gulp.src(paths.html.all)
             // Minifica o HTML.
             .pipe(htmlmin({ collapseWhitespace: true }))
             // Cria e armazena o arquivo do diretório dist.
-            .pipe(dest(paths.output))
+            .pipe(gulp.dest(paths.output))
     );
 }
 
@@ -63,7 +63,7 @@ function html() {
 function styles() {
     // Retorna o caminho para os arquivos iniciais/de origem.
     return (
-        src(paths.styles.main)
+        gulp.src(paths.styles.main)
             // O pipe está sendo usado para criar um caminho dentro do gulp.
             // Dentro do SASS foi criado um estilo de compresso, que é para ele minificar o arquivo.
             .pipe(
@@ -73,7 +73,7 @@ function styles() {
             )
             // O pipe está sendo usado para criar um caminho dentro do gulp.
             // O dest está sendo usado para criar a pasta dist com o arquivo dentro chamado main.css.
-            .pipe(dest(paths.output))
+            .pipe(gulp.dest(paths.output))
             // Responsável por atualizar/recarregar a página.
             .pipe(connect.reload())
     );
@@ -104,7 +104,7 @@ function scripts() {
             .pipe(uglify())
             // O pipe está sendo usado para criar um caminho dentro do gulp.
             // Cria a pasta dist com o arquivo dentro chamado bundle.js.
-            .pipe(dest(paths.output))
+            .pipe(gulp.dest(paths.output))
             // O pipe está sendo usado para criar um caminho dentro do gulp.
             // Responsável por atualizar/recarregar a página.
             .pipe(connect.reload())
@@ -112,6 +112,6 @@ function scripts() {
 }
 
 // Está criando um export chamado build que é responsável por disparar três funções ao mesmo tempo.
-exports.build = parallel(html, styles, scripts);
+exports.build = gulp.parallel(html, styles, scripts);
 // Está criando um export chamado default que é responsável por disparar duas funções ao mesmo tempo.
-exports.default = parallel(server, sentinel);
+exports.default = gulp.parallel(server, sentinel);
