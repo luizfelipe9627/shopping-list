@@ -111,5 +111,7 @@ function scripts() {
     );
 }
 
+// Está criando um export chamado build que é responsável por disparar três funções ao mesmo tempo.
+exports.build = parallel(html, styles, scripts);
 // Está criando um export chamado default que é responsável por disparar duas funções ao mesmo tempo.
 exports.default = parallel(server, sentinel);
