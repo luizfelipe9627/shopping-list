@@ -1,7 +1,7 @@
 # Shopping List
 ![Badge](http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge)
 
-<img src="https://github.com/luizfelipe9627/tourist-attractions-m3/blob/main/src/assets/img/apresentacao.gif" alt="Apresentação da atividade">
+<img src="https://github.com/luizfelipe9627/shopping-list/blob/main/src/assets/apresentacao.gif" alt="Apresentação da atividade">
 
 ## 📄 Descrição
 
